@@ -87,7 +87,7 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 }
 
 // Check if the input is an isogram
-bool UBullCowCartridge::IsIsogram(FString Word)
+bool UBullCowCartridge::IsIsogram(FString Word) const
 {
     // TODO check if there are repeating words
     return true;
