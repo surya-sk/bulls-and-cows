@@ -33,6 +33,8 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
     PrintLine(TEXT("You have %d lives."), Lives);
+
+    const TCHAR Word[] = TEXT("action");
 }
 
 // Restart the game after ending
@@ -52,11 +54,12 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
         return;
     }
 
-    // TODO: check if word is an isogram
-    // if ()
-    // {
-    //     
-    // }
+    // check if it is an isogram
+    if (!IsIsogram(Guess))
+    {
+        PrintLine(TEXT("This word has repeating characters. Not an isogram."));
+        return;
+    }
     
 
     if(Guess.Len() != WordToGuess.Len())
@@ -82,4 +85,11 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 
     // show number of lives remaining
     PrintLine(TEXT("You have %d live(s) remaining."), Lives);
+}
+
+// Check if the input is an isogram
+bool UBullCowCartridge::IsIsogram(FString Word)
+{
+    // TODO check if there are repeating words
+    return true;
 }
