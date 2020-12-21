@@ -32,7 +32,7 @@ void UBullCowCartridge::SetupGame()
     // print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
-    PrintLine(TEXT("You have %d lives left."), Lives);
+    PrintLine(TEXT("You have %d lives."), Lives);
 }
 
 // Restart the game after ending
