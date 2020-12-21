@@ -7,6 +7,7 @@
 #include "BullCowCartridge.generated.h"
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
+
 class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 {
 	GENERATED_BODY()
@@ -17,5 +18,5 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 
 	// Your declarations go below!
 	private:
-	
+	FString WordToGuess;
 };
