@@ -33,39 +33,51 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
     PrintLine(TEXT("You have %d lives left."), Lives);
-    PrintLine(TEXT("Press ENTER to continue"));
 }
 
 // Restart the game after ending
 void UBullCowCartridge::EndGame()
 {
     bGameOver = true;
+    PrintLine(TEXT("\nPress ENTER to continue"));
 }
 
+// Validate guess and respond accordingly
 void UBullCowCartridge::ProcessGuess(FString Guess)
 {
     if(Guess == WordToGuess)
     {
         PrintLine(TEXT("You have guessed it! Congratulations. \n Press ENTER to continue."));
         EndGame();
+        return;
     }
-    else
+
+    // TODO: check if word is an isogram
+    // if ()
+    // {
+    //     
+    // }
+    
+
+    if(Guess.Len() != WordToGuess.Len())
     {
-        //decrease life when guess is wrong
-        --Lives;
-        if(Lives > 0)
-        {
-            if(Guess.Len() != WordToGuess.Len())
-            {
-                PrintLine(TEXT("The word is %d letters long. You've lost"), WordToGuess.Len());
-            }
-            PrintLine(TEXT("You've lost a life. %d remaining."), Lives);
-        }
-        else
-        {
-            //End game after player runs out of lives
-            PrintLine(TEXT("You've run out of lives. Game over.\n Press ENTER to continue."));
-            EndGame();
-        }
+        PrintLine(TEXT("The word is %d letters long. Try again."), WordToGuess.Len());
+        return;
     }
+
+    PrintLine(TEXT("You've lost a life. %d remaining."), Lives);
+    //decrease life when guess is wrong
+    --Lives;
+
+    if(Lives <= 0)
+    {
+        ClearScreen();
+        PrintLine(TEXT("You've run out of lives. Game over."));
+        PrintLine(TEXT("The word was %s. Better luck next time.", *WordToGuess));
+        //End game after player runs out of lives
+        EndGame();
+        return;
+    }
+
+    PrintLine(TEXT("You have %d lives remaining."), Lives);
 }
