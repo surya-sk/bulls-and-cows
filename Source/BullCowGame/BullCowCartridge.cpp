@@ -24,6 +24,7 @@ void UBullCowCartridge::OnInput(const FString& Input)
         }
         else
         {
+            //decrease life when guess is wrong
             --Lives;
             if(Lives > 0)
             {
@@ -35,6 +36,7 @@ void UBullCowCartridge::OnInput(const FString& Input)
             }
             else
             {
+                //End game after player runs out of lives
                 PrintLine(TEXT("You've run out of lives. Game over."));
                 EndGame();
             }
