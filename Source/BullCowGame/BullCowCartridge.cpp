@@ -1,4 +1,5 @@
 #include "BullCowCartridge.h"
+#include "WordList.h"
 
 // When the game starts
 void UBullCowCartridge::BeginPlay() 
