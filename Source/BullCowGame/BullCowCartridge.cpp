@@ -47,7 +47,7 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 {
     if(Guess == WordToGuess)
     {
-        PrintLine(TEXT("You have guessed it! Congratulations. \n Press ENTER to continue."));
+        PrintLine(TEXT("You have guessed it! Congratulations."));
         EndGame();
         return;
     }
@@ -65,19 +65,20 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
         return;
     }
 
-    PrintLine(TEXT("You've lost a life. %d remaining."), Lives);
     //decrease life when guess is wrong
+    PrintLine(TEXT("You've lost a life."));
     --Lives;
 
+    // Show losing message when all lives are lost
     if(Lives <= 0)
     {
         ClearScreen();
         PrintLine(TEXT("You've run out of lives. Game over."));
-        PrintLine(TEXT("The word was %s. Better luck next time.", *WordToGuess));
+        PrintLine(TEXT("The word was %s. Better luck next time."), *WordToGuess);
         //End game after player runs out of lives
         EndGame();
         return;
     }
 
-    PrintLine(TEXT("You have %d lives remaining."), Lives);
+    PrintLine(TEXT("You have %d live(s) remaining."), Lives);
 }
