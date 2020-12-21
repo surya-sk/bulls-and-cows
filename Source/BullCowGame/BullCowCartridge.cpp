@@ -20,14 +20,14 @@ void UBullCowCartridge::OnInput(const FString& Input)
         if(Input == WordToGuess)
         {
             PrintLine(TEXT("You have guessed it! Congratulations"));
-            EndGame();
+            bGameOver = true;
         }
         else
         {
             if(Input.Len() != WordToGuess.Len())
             {
                 PrintLine(TEXT("The word is %d letters long. You've lost"), WordToGuess.Len());
-                EndGame();
+                bGameOver = true;
             }
         }
     }
