@@ -24,12 +24,12 @@ void UBullCowCartridge::OnInput(const FString& Input)
 // Setup the game up 
 void UBullCowCartridge::SetupGame()
 {
-    // Initalize variables
+    // initalize variables
     WordToGuess = TEXT("action");
     Lives = WordToGuess.Len();
     bGameOver = false;
 
-    // Print welcome messages
+    // print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
     PrintLine(TEXT("You have %d lives left."), Lives);
@@ -69,16 +69,17 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
     PrintLine(TEXT("You've lost a life."));
     --Lives;
 
-    // Show losing message when all lives are lost
+    // show losing message when all lives are lost
     if(Lives <= 0)
     {
         ClearScreen();
         PrintLine(TEXT("You've run out of lives. Game over."));
         PrintLine(TEXT("The word was %s. Better luck next time."), *WordToGuess);
-        //End game after player runs out of lives
+        // end game after player runs out of lives
         EndGame();
         return;
     }
 
+    // show number of lives remaining
     PrintLine(TEXT("You have %d live(s) remaining."), Lives);
 }
