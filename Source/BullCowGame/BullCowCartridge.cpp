@@ -1,16 +1,15 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "BullCowCartridge.h"
 
-void UBullCowCartridge::BeginPlay() // When the game starts
+// When the game starts
+void UBullCowCartridge::BeginPlay() 
 {
     Super::BeginPlay();
-    WordToGuess = TEXT("action");
-    PrintLine(TEXT("Welcome to Bulls and Cows!"));
-    PrintLine(TEXT("Guess the 5 letter word.")); //hard-coded. Change later
-    PrintLine(TEXT("Press ENTER to continue"));
+    GameInit();
 }
 
-void UBullCowCartridge::OnInput(const FString& Input) // When the player hits enter
+// When the player hits enter
+void UBullCowCartridge::OnInput(const FString& Input) 
 {
     ClearScreen();
     if(Input == WordToGuess)
@@ -22,5 +21,13 @@ void UBullCowCartridge::OnInput(const FString& Input) // When the player hits en
     {
         PrintLine(TEXT("Wrong"));
     }
-    
+}
+
+// Set guess word and print welcome message
+void UBullCowCartridge::GameInit()
+{
+    WordToGuess = TEXT("action");
+    PrintLine(TEXT("Welcome to Bulls and Cows!"));
+    PrintLine(TEXT("Guess the 5 letter word.")); //hard-coded. Change later
+    PrintLine(TEXT("Press ENTER to continue"));
 }
