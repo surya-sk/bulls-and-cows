@@ -30,8 +30,8 @@ void UBullCowCartridge::OnInput(const FString& Input)
                 if(Input.Len() != WordToGuess.Len())
                 {
                     PrintLine(TEXT("The word is %d letters long. You've lost"), WordToGuess.Len());
-                    EndGame();
                 }
+                PrintLine(TEXT("You've lost a life. %d remaining."), Lives);
             }
             else
             {
