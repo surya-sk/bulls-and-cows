@@ -17,6 +17,7 @@ void UBullCowCartridge::OnInput(const FString& Input)
     }
     else
     {
+        // keep playing the game
         if(Input == WordToGuess)
         {
             PrintLine(TEXT("You have guessed it! Congratulations"));
@@ -36,19 +37,21 @@ void UBullCowCartridge::OnInput(const FString& Input)
     }
 }
 
-// Initalize variables 
+// Setup the game up 
 void UBullCowCartridge::SetupGame()
 {
+    // Initalize variables
     WordToGuess = TEXT("action");
     Lives = 3;
     bGameOver = false;
 
-    //Print welcome messages
+    // Print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
     PrintLine(TEXT("Press ENTER to continue"));
 }
 
+// Restart the game after ending
 void UBullCowCartridge::EndGame()
 {
     bGameOver = true;
