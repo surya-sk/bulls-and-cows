@@ -38,12 +38,13 @@ void UBullCowCartridge::SetupGame()
 {
     // Initalize variables
     WordToGuess = TEXT("action");
-    Lives = 3;
+    Lives = WordToGuess.Len();
     bGameOver = false;
 
     // Print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
+    PrintLine(TEXT("You have %d lives left."), Lives);
     PrintLine(TEXT("Press ENTER to continue"));
 }
 
