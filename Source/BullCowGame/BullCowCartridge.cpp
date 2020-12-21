@@ -15,23 +15,19 @@ void UBullCowCartridge::OnInput(const FString& Input)
         ClearScreen();
         SetupGame();
     }
-    else
+    else  // keep playing the game
     {
-        // keep playing the game
         if(Input == WordToGuess)
         {
             PrintLine(TEXT("You have guessed it! Congratulations"));
-            return;
+            EndGame();
         }
         else
         {
             if(Input.Len() != WordToGuess.Len())
             {
-                PrintLine(TEXT("The word is %d letters long. Try again"), WordToGuess.Len());
-            }
-            else
-            {
-                PrintLine(TEXT("Wrong word. Please try again"));
+                PrintLine(TEXT("The word is %d letters long. You've lost"), WordToGuess.Len());
+                EndGame();
             }
         }
     }
