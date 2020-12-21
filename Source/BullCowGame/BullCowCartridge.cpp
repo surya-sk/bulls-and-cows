@@ -6,6 +6,7 @@ void UBullCowCartridge::BeginPlay()
 {
     Super::BeginPlay();
     SetupGame();
+    GetValidWords(Words);
 }
 
 // When the player hits enter
@@ -100,4 +101,18 @@ bool UBullCowCartridge::IsIsogram(FString Word) const
         }
     }    
     return true;
+}
+
+// Return a list with isograms between 4 and 9 letters
+TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordsList) const
+{
+    TArray<FString> FilteredWordList;
+    for(int32 i = 0; i < WordsList.Num(); i++)
+    {
+        if(WordsList[i].Len() >=4 && WordsList[i].Len() <= 8 && IsIsogram(WordsList[i]))
+        {
+            FilteredWordList.Emplace(WordsList[i]);
+        }
+    }
+    return FilteredWordList;
 }
