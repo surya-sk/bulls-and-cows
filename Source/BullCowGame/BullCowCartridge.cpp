@@ -8,7 +8,7 @@ void UBullCowCartridge::BeginPlay()
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the 5 letter word.")); //hard-coded. Change later
     PrintLine(TEXT("Press ENTER to continue"));
-    GameInit();
+    SetupGame();
 }
 
 // When the player hits enter
@@ -22,12 +22,19 @@ void UBullCowCartridge::OnInput(const FString& Input)
     }
     else
     {
-        PrintLine(TEXT("Wrong"));
+        if(Input.Len() != WordToGuess.Len())
+        {
+            PrintLine(TEXT("The word is 5 letters long. Try again"));
+        }
+        else
+        {
+            PrintLine(TEXT("Wrong word. Please try again"));
+        }
     }
 }
 
-// Set guess word and print welcome message
-void UBullCowCartridge::GameInit()
+// Initalize variables 
+void UBullCowCartridge::SetupGame()
 {
     WordToGuess = TEXT("action");
     Lives = 3;
