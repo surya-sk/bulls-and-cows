@@ -17,32 +17,7 @@ void UBullCowCartridge::OnInput(const FString& Input)
     }
     else  // keep playing the game
     {
-        if(Input == WordToGuess)
-        {
-            PrintLine(TEXT("You have guessed it! Congratulations"));
-            EndGame();
-        }
-        else
-        {
-            //decrease life when guess is wrong
-            --Lives;
-            if(Lives > 0)
-            {
-                if(Input.Len() != WordToGuess.Len())
-                {
-                    PrintLine(TEXT("The word is %d letters long. You've lost"), WordToGuess.Len());
-                }
-                PrintLine(TEXT("You've lost a life. %d remaining."), Lives);
-            }
-            else
-            {
-                //End game after player runs out of lives
-                PrintLine(TEXT("You've run out of lives. Game over."));
-                EndGame();
-            }
-            
-            
-        }
+        ProcessGuess(Input);
     }
 }
 
@@ -65,4 +40,32 @@ void UBullCowCartridge::SetupGame()
 void UBullCowCartridge::EndGame()
 {
     bGameOver = true;
+}
+
+void UBullCowCartridge::ProcessGuess(FString Guess)
+{
+    if(Guess == WordToGuess)
+    {
+        PrintLine(TEXT("You have guessed it! Congratulations. \n Press ENTER to continue."));
+        EndGame();
+    }
+    else
+    {
+        //decrease life when guess is wrong
+        --Lives;
+        if(Lives > 0)
+        {
+            if(Guess.Len() != WordToGuess.Len())
+            {
+                PrintLine(TEXT("The word is %d letters long. You've lost"), WordToGuess.Len());
+            }
+            PrintLine(TEXT("You've lost a life. %d remaining."), Lives);
+        }
+        else
+        {
+            //End game after player runs out of lives
+            PrintLine(TEXT("You've run out of lives. Game over.\n Press ENTER to continue."));
+            EndGame();
+        }
+    }
 }
