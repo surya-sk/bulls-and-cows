@@ -27,6 +27,7 @@ void UBullCowCartridge::OnInput(const FString& Input)
 void UBullCowCartridge::GameInit()
 {
     WordToGuess = TEXT("action");
+    Lives = 3;
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the 5 letter word.")); //hard-coded. Change later
     PrintLine(TEXT("Press ENTER to continue"));
