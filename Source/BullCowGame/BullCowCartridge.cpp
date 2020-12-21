@@ -19,7 +19,7 @@ void UBullCowCartridge::OnInput(const FString& Input)
     {
         if(Input == WordToGuess)
         {
-            PrintLine(TEXT("You have guess it! Congratulations"));
+            PrintLine(TEXT("You have guessed it! Congratulations"));
             return;
         }
         else
