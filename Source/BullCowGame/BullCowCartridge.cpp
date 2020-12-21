@@ -53,6 +53,12 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
         EndGame();
         return;
     }
+    
+    if(Guess.Len() != WordToGuess.Len())
+    {
+        PrintLine(TEXT("The word is %d letters long. Try again."), WordToGuess.Len());
+        return;
+    }
 
     // check if it is an isogram
     if (!IsIsogram(Guess))
@@ -60,15 +66,8 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
         PrintLine(TEXT("This word has repeating characters. Not an isogram."));
         return;
     }
-    
 
-    if(Guess.Len() != WordToGuess.Len())
-    {
-        PrintLine(TEXT("The word is %d letters long. Try again."), WordToGuess.Len());
-        return;
-    }
-
-    //decrease life when guess is wrong
+    // decrease life when guess is wrong
     PrintLine(TEXT("You've lost a life."));
     --Lives;
 
