@@ -33,8 +33,6 @@ void UBullCowCartridge::SetupGame()
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
     PrintLine(TEXT("You have %d lives."), Lives);
-
-    const TCHAR Word[] = TEXT("action");
 }
 
 // Restart the game after ending
@@ -90,5 +88,15 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 bool UBullCowCartridge::IsIsogram(FString Word) const
 {
     // TODO check if there are repeating words
+    for(int32 i = 0; i < Word.Len(); i++)
+    {
+        for(int32 c = i + 1; c < Word.Len(); c++)
+        {
+            if(Word[i] == Word[c])
+            {
+                return false;
+            }
+        }
+    }    
     return true;
 }
