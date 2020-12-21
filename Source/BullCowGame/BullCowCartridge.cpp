@@ -5,10 +5,10 @@
 void UBullCowCartridge::BeginPlay() 
 {
     Super::BeginPlay();
-    PrintLine(TEXT("Welcome to Bulls and Cows!"));
-    PrintLine(TEXT("Guess the 5 letter word.")); //hard-coded. Change later
-    PrintLine(TEXT("Press ENTER to continue"));
     SetupGame();
+    PrintLine(TEXT("Welcome to Bulls and Cows!"));
+    PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len()); //hard-coded. Change later
+    PrintLine(TEXT("Press ENTER to continue"));
 }
 
 // When the player hits enter
@@ -24,7 +24,7 @@ void UBullCowCartridge::OnInput(const FString& Input)
     {
         if(Input.Len() != WordToGuess.Len())
         {
-            PrintLine(TEXT("The word is 5 letters long. Try again"));
+            PrintLine(TEXT("The word is %d letters long. Try again"), WordToGuess.Len());
         }
         else
         {
