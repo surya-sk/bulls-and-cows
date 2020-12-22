@@ -36,8 +36,8 @@ void UBullCowCartridge::SetupGame()
 
     // print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
-    PrintLine(TEXT("Hidden word is %s"), *WordToGuess);
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
+    DisplayHints(WordToGuess);
     PrintLine(TEXT("You have %d lives."), Lives);
 }
 
@@ -146,4 +146,21 @@ FBullCowCount UBullCowCartridge::GetBullsAndCows(const FString& Guess) const
         }
     }
     return Count;
+}
+
+// Displays hint for the word to guess
+void UBullCowCartridge::DisplayHints(const FString& Word)
+{
+    int32 Rand1 = FMath::RandRange(0, Word.Len());
+    int32 Rand2 = FMath::RandRange(0, Word.Len());
+    FString Hint = FString::ChrN(Word.Len(), TEXT('-'));
+    for (int32 i = 0; i < Word.Len(); i++)
+    {
+        if(i == Rand1 || i == Rand2)
+        {
+            Hint[i] = Word[i];
+        }
+    }
+    
+    PrintLine(TEXT("Hint is %s."), *Hint);
 }
