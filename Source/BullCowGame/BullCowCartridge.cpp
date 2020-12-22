@@ -86,6 +86,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
 
     if(Guess == "skip")
     {
+        PrintLine(TEXT("The word was %s. Better luck next time."), *WordToGuess);
         EndGame();
         return;
     }
@@ -114,6 +115,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
 
     // decrease life when guess is wrong
     PrintLine(TEXT("You've lost a life."));
+    DisplayHints(WordToGuess);
     --Lives;
 
     // show losing message when all lives are lost
