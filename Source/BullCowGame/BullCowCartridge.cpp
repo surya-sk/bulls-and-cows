@@ -76,6 +76,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
     {
         PrintLine(TEXT("Game made by Surya Kashyap"));
         PrintLine(TEXT("Assets and starter content by GameDev.tv"));
+        PrintLine(TEXT("Music: https://mixkit.co/free-stock-music/"));
         PrintLine(TEXT("This game is open-source."));
         PrintLine(TEXT("https://github.com/surya-sk/bull-cow-ue4"));
         PrintLine(TEXT("Contact: surya.sk05@outlook.com"));
