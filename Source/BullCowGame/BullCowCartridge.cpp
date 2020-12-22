@@ -34,8 +34,8 @@ void UBullCowCartridge::SetupGame()
     Lives = WordToGuess.Len() * 2;
     bGameOver = false;
     // random places to show hints
-    Rand1 = FMath::RandRange(0, WordToGuess.Len());
-    Rand2 = FMath::RandRange(0, WordToGuess.Len());
+    Rand1 = FMath::RandRange(0, WordToGuess.Len()-1);
+    Rand2 = FMath::RandRange(0, WordToGuess.Len()-1);
 
     // print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
@@ -68,6 +68,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         PrintLine(TEXT("Bull: Right letter in right place."));
         PrintLine(TEXT("Cow: Right letter in wrong place."));
         PrintLine(TEXT("Type quit to exit the game."));
+        PrintLine(TEXT("Type skip to skip current word."));
         PrintLine(TEXT("Type credits for credits."));
         return;
     }
@@ -80,6 +81,12 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         PrintLine(TEXT("This game is open-source."));
         PrintLine(TEXT("https://github.com/surya-sk/bull-cow-ue4"));
         PrintLine(TEXT("Contact: surya.sk05@outlook.com"));
+        return;
+    }
+
+    if(Guess == "skip")
+    {
+        EndGame();
         return;
     }
 
