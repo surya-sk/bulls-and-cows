@@ -142,6 +142,7 @@ void UBullCowCartridge::GetBullsAndCows(const FString& Guess, int32& BullNum, in
             if(Guess[i] == WordToGuess[j])
             {
                 CowNum++;
+                break;
             }
         }
     }
