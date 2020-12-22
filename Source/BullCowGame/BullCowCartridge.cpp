@@ -45,7 +45,7 @@ void UBullCowCartridge::EndGame()
 }
 
 // Validate guess and respond accordingly
-void UBullCowCartridge::ProcessGuess(FString Guess)
+void UBullCowCartridge::ProcessGuess(const FString& Guess)
 {
     if(Guess == WordToGuess)
     {
@@ -87,7 +87,7 @@ void UBullCowCartridge::ProcessGuess(FString Guess)
 }
 
 // Check if the input is an isogram
-bool UBullCowCartridge::IsIsogram(FString Word) const
+bool UBullCowCartridge::IsIsogram(const FString& Word) const
 {
     // TODO check if there are repeating words
     for(int32 i = 0; i < Word.Len(); i++)
@@ -104,7 +104,7 @@ bool UBullCowCartridge::IsIsogram(FString Word) const
 }
 
 // Return a list with isograms between 4 and 9 letters
-TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordsList) const
+TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordsList) const
 {
     TArray<FString> FilteredWordList;
     for(FString ThisWord : WordsList)
