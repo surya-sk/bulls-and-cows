@@ -36,6 +36,8 @@ void UBullCowCartridge::SetupGame()
 
     // print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
+    PrintLine(TEXT("Press Tab to enter/exit the terminal."));
+    PrintLine(TEXT("Type help for more info and commands."));
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
     DisplayHints(WordToGuess);
     PrintLine(TEXT("You have %d lives."), Lives);
@@ -51,6 +53,32 @@ void UBullCowCartridge::EndGame()
 // Validate guess and respond accordingly
 void UBullCowCartridge::ProcessGuess(const FString& Guess)
 {
+    if(Guess == "exit")
+    {
+        FGenericPlatformMisc::RequestExit(false);
+        return;
+    }
+
+    if(Guess == "help")
+    {
+        PrintLine(TEXT("An isogram is a word with no repeating \nletters."));
+        PrintLine(TEXT("Bull: Right letter in right place."));
+        PrintLine(TEXT("Cow: Right letter in wrong place."));
+        PrintLine(TEXT("Type quit to exit the game."));
+        PrintLine(TEXT("Type credits for credits."));
+        return;
+    }
+
+    if(Guess == "credits")
+    {
+        PrintLine(TEXT("Game made by Surya Kashyap"));
+        PrintLine(TEXT("Assets and starter content by GameDev.tv"));
+        PrintLine(TEXT("This game is open-source."));
+        PrintLine(TEXT("https://github.com/surya-sk/bull-cow-ue4"));
+        PrintLine(TEXT("Contact: surya.sk05@outlook.com"));
+        return;
+    }
+
     if(Guess == WordToGuess)
     {
         PrintLine(TEXT("You have guessed it! Congratulations."));
@@ -61,6 +89,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
     if(Guess.Len() != WordToGuess.Len())
     {
         PrintLine(TEXT("The word is %d letters long. Try again."), WordToGuess.Len());
+        DisplayHints(WordToGuess);
         return;
     }
 
@@ -68,6 +97,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
     if (!IsIsogram(Guess))
     {
         PrintLine(TEXT("The word does not have repeating letters."));
+        DisplayHints(WordToGuess);
         return;
     }
 
@@ -162,5 +192,5 @@ void UBullCowCartridge::DisplayHints(const FString& Word)
         }
     }
     
-    PrintLine(TEXT("Hint is %s."), *Hint);
+    PrintLine(TEXT("Hint: %s"), *Hint);
 }
