@@ -84,6 +84,11 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         return;
     }
 
+    // show bulls and cows
+    int32 Bulls, Cows;
+    GetBullsAndCows(Guess, Bulls, Cows);
+    PrintLine(TEXT("You have %d Bulls and %d Cows."), Bulls, Cows);
+
     // show number of lives remaining
     PrintLine(TEXT("You have %d live(s) remaining."), Lives);
 }
@@ -91,7 +96,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
 // Check if the input is an isogram
 bool UBullCowCartridge::IsIsogram(const FString& Word) const
 {
-    // TODO check if there are repeating words
+    // check if there are repeating letters
     for(int32 i = 0; i < Word.Len(); i++)
     {
         for(int32 c = i + 1; c < Word.Len(); c++)
@@ -117,4 +122,27 @@ TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordsLis
         }
     }
     return FilteredWordList;
+}
+
+// Gives the player bulls and cows via out paramters
+void UBullCowCartridge::GetBullsAndCows(const FString& Guess, int32& BullNum, int32& CowNum) const
+{
+    BullNum = 0;
+    CowNum = 0;
+
+    for (int32 i = 0; i < Guess.Len(); i++)
+    {
+        if(Guess[i] == WordToGuess[i])
+        {
+            BullNum++;
+            continue;
+        }
+        for (int32 j = 0; j < Guess.Len(); j++)
+        {
+            if(Guess[i] == WordToGuess[j])
+            {
+                CowNum++;
+            }
+        }
+    }
 }
