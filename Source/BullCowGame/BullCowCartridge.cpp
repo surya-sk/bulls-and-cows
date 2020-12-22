@@ -118,7 +118,7 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
 
     // show bulls and cows
     FBullCowCount Score = GetBullsAndCows(Guess);
-    PrintLine(TEXT("You have %d Bulls and %d Cows."), Score.Bulls, Score.Cows);
+    PrintLine(TEXT("You have %d Bull(s) and %d Cow(s)."), Score.Bulls, Score.Cows);
 
     // show number of lives remaining
     PrintLine(TEXT("You have %d live(s) remaining."), Lives);
