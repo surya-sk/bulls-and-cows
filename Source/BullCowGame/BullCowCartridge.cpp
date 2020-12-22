@@ -31,7 +31,7 @@ void UBullCowCartridge::SetupGame()
     // initalize variables
     int32 RandomWordIndex = FMath::RandRange(0, GetValidWords(Words).Num()-1);
     WordToGuess = GetValidWords(Words)[RandomWordIndex];
-    Lives = WordToGuess.Len();
+    Lives = WordToGuess.Len() * 2;
     bGameOver = false;
     // random places to show hints
     Rand1 = FMath::RandRange(0, WordToGuess.Len());
