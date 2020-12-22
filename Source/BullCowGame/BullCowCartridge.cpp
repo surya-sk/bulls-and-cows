@@ -107,11 +107,11 @@ bool UBullCowCartridge::IsIsogram(FString Word) const
 TArray<FString> UBullCowCartridge::GetValidWords(TArray<FString> WordsList) const
 {
     TArray<FString> FilteredWordList;
-    for(int32 i = 0; i < WordsList.Num(); i++)
+    for(FString ThisWord : WordsList)
     {
-        if(WordsList[i].Len() >=4 && WordsList[i].Len() <= 8 && IsIsogram(WordsList[i]))
+        if(ThisWord.Len() >= 4 && ThisWord.Len() <= 8 && IsIsogram(ThisWord))
         {
-            FilteredWordList.Emplace(WordsList[i]);
+            FilteredWordList.Emplace(ThisWord);
         }
     }
     return FilteredWordList;
