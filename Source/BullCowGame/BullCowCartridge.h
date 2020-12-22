@@ -34,4 +34,5 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 	FString WordToGuess;
 	int32 Lives;
 	bool bGameOver;
+	int32 Rand1, Rand2;
 };

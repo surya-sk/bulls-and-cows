@@ -33,12 +33,15 @@ void UBullCowCartridge::SetupGame()
     WordToGuess = GetValidWords(Words)[RandomWordIndex];
     Lives = WordToGuess.Len();
     bGameOver = false;
+    // random places to show hints
+    Rand1 = FMath::RandRange(0, WordToGuess.Len());
+    Rand2 = FMath::RandRange(0, WordToGuess.Len());
 
     // print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
     PrintLine(TEXT("Press Tab to enter/exit the terminal."));
     PrintLine(TEXT("Type help for more info and commands."));
-    PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
+    PrintLine(TEXT("Guess the %d letter isogram."), WordToGuess.Len());
     DisplayHints(WordToGuess);
     PrintLine(TEXT("You have %d lives."), Lives);
 }
@@ -181,8 +184,6 @@ FBullCowCount UBullCowCartridge::GetBullsAndCows(const FString& Guess) const
 // Displays hint for the word to guess
 void UBullCowCartridge::DisplayHints(const FString& Word)
 {
-    int32 Rand1 = FMath::RandRange(0, Word.Len());
-    int32 Rand2 = FMath::RandRange(0, Word.Len());
     FString Hint = FString::ChrN(Word.Len(), TEXT('-'));
     for (int32 i = 0; i < Word.Len(); i++)
     {
