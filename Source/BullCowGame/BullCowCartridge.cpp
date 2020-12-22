@@ -27,12 +27,14 @@ void UBullCowCartridge::OnInput(const FString& Input)
 void UBullCowCartridge::SetupGame()
 {
     // initalize variables
-    WordToGuess = TEXT("action");
+    int32 RandomWordIndex = FMath::RandRange(0, GetValidWords(Words).Num()-1);
+    WordToGuess = GetValidWords(Words)[RandomWordIndex];
     Lives = WordToGuess.Len();
     bGameOver = false;
 
     // print welcome messages
     PrintLine(TEXT("Welcome to Bulls and Cows!"));
+    PrintLine(TEXT("Hidden word is %s"), *WordToGuess);
     PrintLine(TEXT("Guess the %d letter word."), WordToGuess.Len());
     PrintLine(TEXT("You have %d lives."), Lives);
 }
