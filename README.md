@@ -12,6 +12,6 @@ This game is an isogram guessing game. Isograms are words with no repeating lett
 The game is free to install on Windows. You can find the .exe file in the releases section.
 The game will soon be available in the Microsoft Store for Windows 10 PCs. It is highly recommneded to download from the Store, as updates are automatically installed.
  
-##Logic
-The game read a list of 1000 common English words, filtering the isograms, stores them in an array and gives the user a random isogram to guess. The hints are displayed at two random palces in the word. Guesses are checked for length and accuracy. The player is given an option to skip a word if they choose to, which restarts the game loop. Repeating words are possible, however. 
+## Logic
+The game read a list of 1000 common English words, filtering the isograms, stores them in an array and gives the user a random isogram to guess. The hints are displayed at two random palces in the word. Guesses are checked for length and accuracy. The player is given an option to skip a word if they choose to, which restarts the game loop. Repeating words are possible at this stage, however. 
  
