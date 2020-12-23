@@ -12,6 +12,13 @@ struct FBullCowCount
 	int32 Cows = 0;
 };
 
+struct FPlayerScore
+{
+	int32 Rights = 0;
+	int32 Wrongs = 0;
+	int32 Skips = 0;	
+};
+
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 
 class BULLCOWGAME_API UBullCowCartridge : public UCartridge
@@ -35,4 +42,5 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 	int32 Lives;
 	bool bGameOver;
 	int32 Rand1, Rand2;
+
 };
