@@ -1,5 +1,5 @@
 ## Bulls and Cows - Word Guessing Game
-<A simple word guessing game I am making in Unreal Engine 4 to learn C++ and UE.
+A simple word guessing game I am making in Unreal Engine 4 to learn C++ and UE.
   
 ## Description
 This game is an isogram guessing game. Isograms are words with no repeating letter. The game gives you two letters as a hint and some lives to guess the word. A Bull means you the right letter is in the right place. A Cow means the right letter but in the wrong place. It's really simple! 
