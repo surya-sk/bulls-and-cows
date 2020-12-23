@@ -9,7 +9,7 @@ This game is an isogram guessing game. Isograms are words with no repeating lett
  [![Desktop-Screenshot.png](https://i.postimg.cc/mDJCZ9Zq/Desktop-Screenshot.png)](https://postimg.cc/hz8fpfdb)
  
  ## Installation
-The game is free to install on Windows. You can find the .exe file in the releases section.
+The game is free to install on Windows. You can find the .exe file in the [Releases](https://github.com/surya-sk/bull-cow-ue4/releases).
 The game will soon be available in the Microsoft Store for Windows 10 PCs. It is highly recommneded to download from the Store, as updates are automatically installed.
  
 ## Logic
