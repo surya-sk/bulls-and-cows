@@ -35,6 +35,7 @@ class BULLCOWGAME_API UBullCowCartridge : public UCartridge
 	TArray<FString> GetValidWords(const TArray<FString>& WordsList) const;
 	FBullCowCount GetBullsAndCows(const FString& Guess) const;
 	void DisplayHints(const FString& Word);
+	void ResetPlayerScore();
 
 	// Your declarations go below!
 	private:

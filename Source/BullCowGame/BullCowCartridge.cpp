@@ -1,10 +1,13 @@
 #include "BullCowCartridge.h"
 #include "WordList.h"
 
+FPlayerScore PlayerScore;
 // When the game starts
 void UBullCowCartridge::BeginPlay() 
 {
     Super::BeginPlay();
+
+    ResetPlayerScore();
 
     SetupGame();
 
@@ -87,13 +90,25 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
     if(Guess == "skip")
     {
         PrintLine(TEXT("The word was %s. Better luck next time."), *WordToGuess);
+        PlayerScore.Skips++;
+        UE_LOG(LogTemp, Warning, TEXT("Skips %d"), PlayerScore.Skips);
         EndGame();
+        return;
+    }
+
+    if(Guess == "score")
+    {
+        PrintLine(TEXT("Correct: %d"), PlayerScore.Rights);
+        PrintLine(TEXT("Skips: %d"), PlayerScore.Skips);
+        PrintLine(TEXT("Wrong: %d"), PlayerScore.Wrongs);
         return;
     }
 
     if(Guess == WordToGuess)
     {
         PrintLine(TEXT("You have guessed it! Congratulations."));
+        PlayerScore.Rights++;
+        UE_LOG(LogTemp, Warning, TEXT("Rights %d"), PlayerScore.Rights);
         EndGame();
         return;
     }
@@ -124,6 +139,8 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         ClearScreen();
         PrintLine(TEXT("You've run out of lives. Game over."));
         PrintLine(TEXT("The word was %s. Better luck next time."), *WordToGuess);
+        PlayerScore.Wrongs++;
+        UE_LOG(LogTemp, Warning, TEXT("Wrongs %d"), PlayerScore.Wrongs);
         // end game after player runs out of lives
         EndGame();
         return;
@@ -204,4 +221,13 @@ void UBullCowCartridge::DisplayHints(const FString& Word)
     }
     
     PrintLine(TEXT("Hint: %s"), *Hint);
+}
+
+// Reset player score
+void UBullCowCartridge::ResetPlayerScore()
+{
+    // reset player score
+    PlayerScore.Rights = 0;
+    PlayerScore.Skips = 0;
+    PlayerScore.Wrongs = 0;
 }
