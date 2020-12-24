@@ -70,8 +70,9 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         PrintLine(TEXT("An isogram is a word with no repeating \nletters."));
         PrintLine(TEXT("Bull: Right letter in right place."));
         PrintLine(TEXT("Cow: Right letter in wrong place."));
-        PrintLine(TEXT("Type exit to quit the game."));
         PrintLine(TEXT("Type skip to skip current word."));
+        PrintLine(TEXT("Type score to see your score."));
+        PrintLine(TEXT("Type exit to quit the game."));
         PrintLine(TEXT("Type credits for credits."));
         return;
     }
