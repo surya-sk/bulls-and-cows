@@ -16,5 +16,5 @@ You can also find the .exe file in the [Releases](https://github.com/surya-sk/bu
 All feedback, especially constructive, is appreciated. To report bugs or request features, create an issue on GitHub or [email me](mailto:surya.sk05@outlook.com) if you don't have a GitHub account. Please be as specific as possible when creating issues and be sure to provide steps to reproduce when reporting bugs. PRs are welcome.  
  
 ## Logic
-The game read a list of 1000 common English words, filtering the isograms, stores them in an array and gives the user a random isogram to guess. The hints are displayed at two random palces in the word. Guesses are checked for length and accuracy. The player is given an option to skip a word if they choose to, which restarts the game loop. Repeating words are possible at this stage, however. 
+The game reads a list of 1000 common English words, filters the isograms from them, stores them in an array and gives the user a random isogram to guess. The hints are displayed at two random places in the word. Guesses are checked for length and accuracy. The player is given an option to skip a word if they choose to, which restarts the game loop. Repeating words are possible at this stage, however. The game also keeps track of the number of rights, wrongs and skips in a single game session.
  
